@@ -1,0 +1,14 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+.idea/
+
+# Never commit real ODP keys or exported reports
+appsettings.*.json
+*.csv
+.env
+
+# Local Claude Code settings
+.claude/settings.local.json

@@ -86,6 +86,19 @@ The report exists to tell you what to test.
 The report folder is published media. If you run Search & Navigation or Optimizely Graph, check that it doesn't
 index the folder, or delete the reports once you are done.
 
+## Using this with Claude Code (or another AI assistant)
+
+[`CLAUDE.md`](CLAUDE.md) gives an AI assistant the package details and the safety rules the code relies on, so it
+doesn't "fix" them from memory. Two slash commands are included:
+
+- `/integrate`: checks your site's prerequisites, adds the files and gets them building. It asks before changing
+  anything.
+- `/review-report <criteria.csv> [usage.csv]`: turns the report job's CSVs into a to-do list for the manual items
+  and a test plan.
+
+Copy the `.claude/commands` folder into your site repo if you want the commands available there. As with any AI
+help, review the changes yourself and don't let it run the swap job against production for you.
+
 ## Clean up afterwards
 
 Once the report job shows nothing left to migrate and testing is complete:
@@ -93,3 +106,7 @@ Once the report job shows nothing left to migrate and testing is complete:
 1. Delete these files and the `AddOdpVisitorGroupMigration` call.
 2. Remove `AddODPVisitorGroups()`, the `EPiServer:OdpVisitorGroupOptions` config and the UNRVLD package.
 3. Optionally delete the `OdpVisitorGroupMigrationBackup` store and the report folder.
+
+## Licence
+
+[MIT](LICENSE). Provided as-is, with no warranty. See the licence for details.
