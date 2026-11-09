@@ -103,7 +103,10 @@ public sealed class MigrationReportWriter
         // Re-applied on every run. "For All Sites" usually grants Everyone read access, and the reports list
         // internal content and audience names, so stop inheriting and allow the admin roles only.
         var acl = (IContentSecurityDescriptor)_securityRepository.Get(folderLink).CreateWritableClone();
-        acl.ToLocal();
+        if (acl.IsInherited)
+        {
+            acl.ToLocal();
+        }
         acl.Clear();
         foreach (var role in _options.EffectiveReportReadRoles)
         {
